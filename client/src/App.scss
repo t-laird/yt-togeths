@@ -10,10 +10,6 @@ h2 {
   background-image: url('./bg.svg');
   background-size: cover;
   min-height: 100vh;
-  padding-bottom: 100px;  
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form {
@@ -44,5 +40,9 @@ h2 {
       color: white;
     }
   }
+}
 
+.yt-embedded-player {
+  width: 100vw;
+  height: 100vh;
 }
