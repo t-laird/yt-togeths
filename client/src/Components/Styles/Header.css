@@ -1,0 +1,22 @@
+header {
+  background-color: #222;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  display: grid;
+  height: 200px;
+  justify-items: center;
+  grid-template-columns: 1fr; }
+  header img {
+    height: 100%;
+    display: block; }
+  header a {
+    color: white;
+    font-size: 30px; }
+    header a:active {
+      color: white; }
+  header .back {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 20px; }

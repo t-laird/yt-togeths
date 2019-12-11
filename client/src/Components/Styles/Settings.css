@@ -1,0 +1,29 @@
+.Settings {
+  display: grid;
+  width: 600px;
+  grid-template-columns: 1fr 250px;
+  margin: 50px auto 0px;
+  padding: 20px 30px;
+  background: rgba(255, 255, 255, 0.81);
+  box-shadow: 5px 4px 4px black;
+  border-radius: 5px; }
+  .Settings label {
+    grid-column: span 2;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center; }
+  .Settings input {
+    font-size: 25px; }
+  .Settings input[type="submit"] {
+    background: #1d1d1d;
+    color: white;
+    transition: 0.3s;
+    border: none; }
+    .Settings input[type="submit"]:hover {
+      background: #CC1B47; }
+  .Settings span {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+    min-height: 30px;
+    grid-column: span 2; }

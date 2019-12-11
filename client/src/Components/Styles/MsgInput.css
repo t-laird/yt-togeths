@@ -1,0 +1,45 @@
+.MsgInput {
+  width: 600px;
+  margin: 0px auto;
+  display: grid;
+  height: 50px;
+  grid-template-columns: 1fr 150px;
+  border-top: none;
+  box-shadow: 5px 4px 4px black; }
+  .MsgInput h3 {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 2;
+    background: rgba(255, 255, 255, 0.694);
+    border-radius: 5px;
+    font-size: 30px; }
+    .MsgInput h3 a, .MsgInput h3 span {
+      font-size: 20px; }
+    .MsgInput h3 a {
+      color: black;
+      margin-right: 30px; }
+      .MsgInput h3 a:active {
+        color: black; }
+    .MsgInput h3 span {
+      margin-left: 30px;
+      text-decoration: underline;
+      cursor: pointer; }
+  .MsgInput input {
+    border: none; }
+  .MsgInput input[type="text"] {
+    padding-left: 15px;
+    font-size: 22px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px; }
+  .MsgInput input[type="submit"] {
+    background: #CC1B47;
+    color: white;
+    display: flex;
+    font-size: 20px;
+    transition: 0.3s;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px; }
+    .MsgInput input[type="submit"]:hover {
+      background: #040B35; }

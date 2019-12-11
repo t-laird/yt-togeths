@@ -1,0 +1,75 @@
+.SignUp {
+  display: grid;
+  width: 600px;
+  grid-template-columns: 1fr;
+  margin: 50px auto 0px;
+  padding: 0px 20px 20px;
+  background: rgba(255, 255, 255, 0.81);
+  box-sizing: content-box;
+  box-shadow: 5px 4px 4px black;
+  border-radius: 5px; }
+  .SignUp span {
+    color: red;
+    min-height: 25px; }
+  .SignUp input {
+    height: 45px;
+    font-size: 25px;
+    border: 1px solid black; }
+    .SignUp input:nth-of-type(2) {
+      border-left: none; }
+  .SignUp input[type="text"], .SignUp input[type="password"], .SignUp input[type="checkbox"], .SignUp label {
+    padding-left: 10px; }
+  .SignUp input[type="submit"] {
+    background: #1d1d1d;
+    color: white;
+    transition: 0.3s;
+    border-bottom: none; }
+    .SignUp input[type="submit"]:hover {
+      background: #CC1B47; }
+  .SignUp .name {
+    display: flex; }
+    .SignUp .name input {
+      width: 50%; }
+  .SignUp .pass {
+    display: grid;
+    grid-template-columns: 90px 50px repeat(2, 230px);
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.817);
+    border-left: 1px solid black;
+    border-right: 1px solid black; }
+    .SignUp .pass label {
+      display: flex;
+      align-items: center;
+      font-size: 14px; }
+    .SignUp .pass input {
+      border: none;
+      height: 100%; }
+      .SignUp .pass input[type="text"], .SignUp .pass input[type="password"] {
+        border-left: 1px solid black; }
+    .SignUp .pass input[type="checkbox"] {
+      width: 20px; }
+    .SignUp .pass a {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .SignUp .pass a:nth-of-type(1) {
+        border-right: 1px solid black; }
+  .SignUp .links {
+    display: flex;
+    height: 50px;
+    border: 1px solid black; }
+    .SignUp .links a {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      background-color: rgba(255, 255, 255, 0.81); }
+      .SignUp .links a:visited {
+        color: black; }
+      .SignUp .links a:hover {
+        color: white;
+        background: #CC1B47; }
+      .SignUp .links a:nth-of-type(1) {
+        border-right: 1px solid black; }

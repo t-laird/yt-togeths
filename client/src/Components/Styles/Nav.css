@@ -1,0 +1,27 @@
+.Nav {
+  display: grid;
+  margin: 0px auto;
+  justify-content: center; }
+  .Nav a, .Nav span {
+    padding: 10px;
+    font-size: 20px;
+    color: black;
+    box-shadow: 5px 4px 4px black;
+    background: #CC1B47;
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    transition: .5s; }
+    .Nav a:active, .Nav span:active {
+      color: black; }
+    .Nav a.active, .Nav span.active {
+      background: black;
+      color: #CC1B47; }
+    .Nav a:nth-child(1), .Nav span:nth-child(1) {
+      border-left: 1px solid black;
+      border-bottom-left-radius: 10px; }
+    .Nav a:nth-last-child(1), .Nav span:nth-last-child(1) {
+      border-bottom-right-radius: 10px; }
+  .Nav span {
+    cursor: pointer;
+    text-decoration: underline; }
