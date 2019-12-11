@@ -16,6 +16,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+let socketRooms = [];
+
 io.on('connection', socket => {
   io.sockets.emit('welcome', 'hi ⛑️');
 
@@ -23,44 +25,16 @@ io.on('connection', socket => {
     console.log('client connected');
   });
 
-  socket.on('message', message => {
-    io.sockets.emit('message', message);
-    const msg = {
-      message: message.msg,
-      user_id: message.user.id
-    };
-    database('messages').insert(msg)
-      .then(() => {
-      })
-      .catch(err => {
-        console.log(`Error adding message: ${err}`);
-      });
+  socket.on('join-room', joinrequest => {
+    socket.join(joinrequest.room.id)
+    io.to(joinrequest.room.id).emit('welcome', `User ${socket.id} has joined the room.`)
   });
 
-  socket.on('newuser', usr => {
-    const msg = {
-      user: { sn: '🤖CHATBOT🤖'},
-      msg: `A new user has connected 👋🏻, hi ${usr.sn}!`
-    };
-    io.sockets.emit('message', msg);
+  socket.on('leave-room', leaverequest => {
+    socket.leave(leaverequest.room.id)
+    io.to(joinrequest.room.id).emit('GoodBye', `User ${socket.id} has left the room.`)
   });
 
-  socket.on('signout', usr => {
-    const msg = {
-      user: { sn: '🤖CHATBOT🤖'},
-      msg: `A user has disconnected 👋🏻, bye ${usr.sn}!`
-    };
-    io.sockets.emit('message', msg);
-  });
-
-  socket.on('namechange', info => {
-    const msg = {
-      user: { sn: '🤖CHATBOT🤖' },
-      msg: `${info.old} has changed their name to ${info.new}.`
-    };
-
-    io.sockets.emit('message', msg);
-  });
 });
 
 http.listen(app.get('port'), () => {
