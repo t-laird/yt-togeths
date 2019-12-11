@@ -1,0 +1,5 @@
+#!/bin/bash
+
+.bin/docker-stop
+.bin/docker-build
+.bin/docker-run
