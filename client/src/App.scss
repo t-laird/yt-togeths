@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;  
+}
+
+h2 {
+  text-align: center;
+}
+
+.App {
+  background-image: url('./bg.svg');
+  background-size: cover;
+  min-height: 100vh;
+  padding-bottom: 100px;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  border: 3px solid black;
+  border-right: none;
+  border-radius: 10px; 
+  input {
+    font-size: 35px;
+    border: none;
+    padding: 10px 7px;
+    border-radius: 10px 0 0 10px; 
+  }
+
+  button {
+    background: none;
+    background: white;
+    color: black;
+    font-size: 20px;
+    border: none;
+    border-radius: 0 10px 10px 0; 
+    border-left: 1px solid black;
+
+    &:hover {
+
+      background: black;
+      border-left: 1px solid white;
+      color: white;
+    }
+  }
+
+}
