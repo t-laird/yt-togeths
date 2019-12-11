@@ -29,8 +29,12 @@ class App extends Component {
         <div class="form">
           <input type="text" value={this.state.formValue} onChange={this.handleChange} placeholder="enter youtube URL"/>
           <button onClick={this.handleSubmit}>Submit</button>
-
-
+        </div>
+        <div >
+          <embed src="http://www.youtube.com/v/GlIzuTQGgzs?version=3&amp;hl=en_US&amp;rel=0&amp;autohide=1&amp;autoplay=1" 
+            wmode="transparent" 
+            type="application/x-shockwave-flash" 
+            allowfullscreen="true" title="Adobe Flash Player" />
         </div>
       </div>
     );
