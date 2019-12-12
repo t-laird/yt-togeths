@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-import Url from 'url-parse';
 
 class Controls extends Component {
   constructor() {
@@ -47,8 +46,8 @@ class Controls extends Component {
     return (
       <div className="controls">
         <input type="text" value={this.roomId} onChange={this.updateRoomId}></input>
-        <button onClick={this.join}>join</button>
-        <button onClick={this.leave}>leave</button>
+        <button onClick={this.join}>join room</button>
+        <button onClick={this.leave}>leave room</button>
         <button onClick={this.play}>play</button>
         <button onClick={this.debug}>debug</button>
       </div>
@@ -56,4 +55,4 @@ class Controls extends Component {
   }
 }
 
-export default Room;
+export default Controls;
