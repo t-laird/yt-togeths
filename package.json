@@ -26,7 +26,8 @@
     "pg": "^7.4.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.0.4",
+    "winston": "^3.2.1"
   },
   "homepage": "https://github.com/t-laird/yt-togeths#readme"
 }
