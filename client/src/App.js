@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router';
 import { withRouter } from 'react-router';
 import './App.scss';
 import io from 'socket.io-client';
+import Room from './Components/Room';
+import Home from './Components/Home';
 
 class App extends Component {
   constructor() {
@@ -68,6 +70,10 @@ class App extends Component {
             type="application/x-shockwave-flash" 
             allowfullscreen="true" title="Adobe Flash Player" />
         </div>
+        <Switch>
+          <Route component={Room} path="/watch/:uuid"></Route>
+          <Route component={Home} path="/"></Route>
+        </Switch>
       </div>
     );
   }
