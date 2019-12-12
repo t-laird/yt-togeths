@@ -45,7 +45,7 @@ io.on('connection', socket => {
   });
 
   socket.on('play', roomId => {
-    io.to(roomId).emit('play');
+    io.to(roomId).emit('play', roomId);
       logger.info(`${socket.id} pressed play to room: ${roomId}`);
   });
 

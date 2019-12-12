@@ -8,13 +8,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      formValue: '',
       roomId: 0
     };
     this.socket = io('http://localhost:5000');
 
     this.socket.on('play', roomId => {
-      console.log(roomId, "WE MUST LISTEN TO THE SERVER, PLAY!!!!");
+      console.log(`room: ${roomId} asked us to play`);
     });
 
     this.handleChange = this.handleChange.bind(this);
