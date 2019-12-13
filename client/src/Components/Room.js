@@ -30,7 +30,6 @@ class Room extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onPlayerReady = this.onPlayerReady.bind(this);
 
     this.join = this.join.bind(this);
     this.leave = this.leave.bind(this);
@@ -58,22 +57,9 @@ class Room extends Component {
       window.player = new window.YT.Player('yt-embedded-player', {
         height: '390',
         width: '640',
-        videoId: videoUrl.query.v,
-        events: {
-          'onReady': this.onPlayerReady(), // TODO addTheseMethods 
-          'onStateChange': this.onPlayerStateChange
-        }
+        videoId: videoUrl.query.v
       });
     }
-  }
-
-  onPlayerReady() {
-    console.info("player is ready");
-    console.info(window);
-  }
-
-  onPlayerStateChange() {
-    console.info("player state changed");
   }
 
   join() {
@@ -113,6 +99,8 @@ class Room extends Component {
           <h3>Change video:</h3>
           <input type="text" value={this.state.videoUrl} onChange={this.handleChange} placeholder="enter youtube URL" />
           <button onClick={this.handleSubmit}>Submit</button>
+        </div>
+        <div className="controls">
           <button onClick={this.play}>play</button>
           <button onClick={this.pause}>pause</button>
           <button onClick={this.debug}>debug</button>
