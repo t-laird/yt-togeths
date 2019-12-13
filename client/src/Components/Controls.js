@@ -6,13 +6,14 @@ class Controls extends Component {
     super();
 
     this.state = {
-      roomId: 'room'
+      roomId: 'asdf'
     };
 
     this.socket = io('http://localhost:5000');
 
     this.socket.on('play', roomId => {
       console.log(`room: ${roomId} asked us to play`);
+      window.player.playVideo();
     });
 
     this.updateRoomId = this.updateRoomId.bind(this);
