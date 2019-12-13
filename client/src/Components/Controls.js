@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 
 class Controls extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      roomId: 'room'
+      roomId: props.roomId
     };
 
     this.socket = io('http://localhost:5000');
@@ -15,15 +15,14 @@ class Controls extends Component {
       console.log(`room: ${roomId} asked us to play`);
     });
 
-    this.updateRoomId = this.updateRoomId.bind(this);
     this.join = this.join.bind(this);
     this.leave = this.leave.bind(this);
     this.play = this.play.bind(this);
-    this.debug = this.debug.bind(this);
-  }
+    this.pause = this.pause.bind(this);
 
-  updateRoomId({ target: {value} }) {
-    this.setState({ roomId: value })
+    this.debug = this.debug.bind(this);
+
+    this.join();
   }
 
   join() {
@@ -38,6 +37,10 @@ class Controls extends Component {
     this.socket.emit('play', this.state.roomId);
   }
 
+  pause() {
+    this.socket.emit('pause', this.state.roomId);
+  }
+
   debug() {
     this.socket.emit('debug', this.state.roomId);
   }
@@ -45,9 +48,6 @@ class Controls extends Component {
   render() {
     return (
       <div className="controls">
-        <input type="text" value={this.roomId} onChange={this.updateRoomId}></input>
-        <button onClick={this.join}>join room</button>
-        <button onClick={this.leave}>leave room</button>
         <button onClick={this.play}>play</button>
         <button onClick={this.debug}>debug</button>
       </div>
