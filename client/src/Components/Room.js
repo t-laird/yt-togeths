@@ -6,10 +6,12 @@ import io from 'socket.io-client';
 class Room extends Component {
   constructor(props) {
     super(props);
+
     var qRoomId = Object.assign({}, props.match.params);
     var qVideoUrl = Object.assign({}, queryString.parse(props.location.search))
-    console.log(qRoomId);
-    console.log(qVideoUrl);
+    console.debug(qRoomId);
+    console.debug(qVideoUrl);
+
     this.state = {
       formValue: '',
       roomId: qRoomId.uuid,
@@ -19,11 +21,17 @@ class Room extends Component {
     this.socket = io('http://localhost:5000');
 
     this.socket.on('play', roomId => {
-      console.log(`room: ${roomId} asked us to play`);
+      this.onPlay();
+    });
+
+    this.socket.on('pause', roomId => {
+      this.onPause();
     });
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onPlayerReady = this.onPlayerReady.bind(this);
+
     this.join = this.join.bind(this);
     this.leave = this.leave.bind(this);
     this.play = this.play.bind(this);
@@ -32,12 +40,6 @@ class Room extends Component {
     this.debug = this.debug.bind(this);
     this.join();
   
-  }
-
-  componentDidMount() {
-    console.log("component did mount", this);
-    console.log("window", window);
-    setTimeout(() => this.handleSubmit(), 100);
   }
 
   handleChange({ target: { value } }) {
@@ -56,14 +58,22 @@ class Room extends Component {
       window.player = new window.YT.Player('yt-embedded-player', {
         height: '390',
         width: '640',
-        videoId: videoUrl.query.v 
-        // ,
-        // events: {
-        //   'onReady': onPlayerReady, // TODO addTheseMethods 
-        //   'onStateChange': onPlayerStateChange
-        // }
+        videoId: videoUrl.query.v,
+        events: {
+          'onReady': this.onPlayerReady(), // TODO addTheseMethods 
+          'onStateChange': this.onPlayerStateChange
+        }
       });
     }
+  }
+
+  onPlayerReady() {
+    console.info("player is ready");
+    console.info(window);
+  }
+
+  onPlayerStateChange() {
+    console.info("player state changed");
   }
 
   join() {
@@ -78,8 +88,18 @@ class Room extends Component {
     this.socket.emit('play', this.state.roomId);
   }
 
+  onPlay() {
+    console.info("play the video");
+    window.playVideo();
+  }
+
   pause() {
     this.socket.emit('pause', this.state.roomId);
+  }
+
+  onPause() {
+    console.info("pause the video");
+    window.pauseVideo();
   }
 
   debug() {
@@ -94,15 +114,10 @@ class Room extends Component {
           <input type="text" value={this.state.videoUrl} onChange={this.handleChange} placeholder="enter youtube URL" />
           <button onClick={this.handleSubmit}>Submit</button>
           <button onClick={this.play}>play</button>
+          <button onClick={this.pause}>pause</button>
           <button onClick={this.debug}>debug</button>
         </div>
         <div id="yt-embedded-player">
-          <embed src="http://www.youtube.com/v/GlIzuTQGgzs?version=3&amp;hl=en_US&amp;rel=0&amp;autohide=1&amp;autoplay=1"
-            width="100%"
-            height="100%"
-            wmode="transparent"
-            type="application/x-shockwave-flash"
-            title="Adobe Flash Player" />
         </div>
       </div>
     );
