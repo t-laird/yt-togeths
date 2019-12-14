@@ -49,6 +49,11 @@ io.on('connection', socket => {
       logger.info(`${socket.id} pressed play to room: ${roomId}`);
   });
 
+  socket.on('pause', roomId => {
+    io.to(roomId).emit('pause', roomId);
+    logger.info(`${socket.id} pressed pause to room: ${roomId}`)
+  })
+
 });
 
 http.listen(app.get('port'), () => {
