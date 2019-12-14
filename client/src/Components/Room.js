@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Url from 'url-parse';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 
 class Room extends Component {
+
   constructor(props) {
     super(props);
 
@@ -22,6 +22,8 @@ class Room extends Component {
 
     this.socket.on('play', roomId => this.onPlay(roomId));
     this.socket.on('pause', roomId => this.onPause(roomId));
+    this.socket.on('join', userName => this.onJoin(userName));
+    this.socket.on('leave', userName => this.onLeave(userName));
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,11 +50,19 @@ class Room extends Component {
   }
 
   join() {
-    this.socket.emit('join-room', this.state.roomId);
+    this.socket.emit('join', this.state.roomId);
+  }
+
+  onJoin(userName) {
+    console.log(`${userName} has joined the room`);
   }
 
   leave() {
-    this.socket.emit('leave-room', this.state.roomId);
+    this.socket.emit('leave', this.state.roomId);
+  }
+
+  onLeave(userName) {
+    console.log(`${userName} has left the room`);
   }
 
   play() {
