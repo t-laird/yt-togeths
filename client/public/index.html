@@ -84,8 +84,9 @@
         player.seekTo(seconds, allowSeekAhead);
       }
 
-      function loadVideoByUrl(videoUrl, startSeconds, endSeconds) {
-        player.loadVideoByUrl(videoUrl, startSeconds, endSeconds);
+      function loadVideoByUrl(videoId, startSeconds) {
+        console.debug("videoId", videoId, startSeconds)
+        player.loadVideoById(videoId, startSeconds);
       }
 
       function getPlayerState() {

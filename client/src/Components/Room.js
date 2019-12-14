@@ -20,13 +20,8 @@ class Room extends Component {
 
     this.socket = io('http://localhost:5000');
 
-    this.socket.on('play', roomId => {
-      this.onPlay();
-    });
-
-    this.socket.on('pause', roomId => {
-      this.onPause();
-    });
+    this.socket.on('play', roomId => this.onPlay(roomId));
+    this.socket.on('pause', roomId => this.onPause(roomId));
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,17 +44,7 @@ class Room extends Component {
   // later we will change the video upon receipt of a socket event
   handleSubmit() {
     const rawUrl = this.state.videoUrl;
-    const videoUrl = new Url(rawUrl, true);
-
-    if (videoUrl.query && videoUrl.query.v) {
-      window.player.destroy();
-
-      window.player = new window.YT.Player('yt-embedded-player', {
-        height: '390',
-        width: '640',
-        videoId: videoUrl.query.v
-      });
-    }
+    window.loadVideoByUrl(rawUrl, 1);
   }
 
   join() {
@@ -74,8 +59,8 @@ class Room extends Component {
     this.socket.emit('play', this.state.roomId);
   }
 
-  onPlay() {
-    console.info("play the video");
+  onPlay(roomId) {
+    console.debug("play the video", roomId);
     window.playVideo();
   }
 
@@ -83,8 +68,8 @@ class Room extends Component {
     this.socket.emit('pause', this.state.roomId);
   }
 
-  onPause() {
-    console.info("pause the video");
+  onPause(roomId) {
+    console.debug("pause the video", roomId);
     window.pauseVideo();
   }
 
