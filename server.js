@@ -32,15 +32,17 @@ io.on('connection', socket => {
     logger.info(`${JSON.stringify(socket.rooms)}`);
   });
 
-  socket.on('join-room', roomId => {
+  socket.on('join', roomId => {
     socket.join(roomId, () => {
       logger.info(`${socket.id} has joined room: ${roomId}`);
+      io.to(roomId).emit('join', socket.id);
     });
   });
 
-  socket.on('leave-room', roomId => {
+  socket.on('leave', roomId => {
     socket.leave(roomId, () => {
       logger.info(`${socket.id} has left room: ${roomId}`);
+      io.to(roomId).emit('leave', socket.id);
     });
   });
 
