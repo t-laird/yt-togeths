@@ -18,7 +18,7 @@ class Room extends Component {
       videoUrl: qVideoUrl.videoUrl
     };
 
-    this.socket = io('http://localhost:5000');
+    this.socket = io();
 
     this.socket.on('play', roomId => this.onPlay(roomId));
     this.socket.on('pause', roomId => this.onPause(roomId));
