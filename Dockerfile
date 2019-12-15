@@ -1,11 +1,10 @@
-FROM node:11
+FROM node:12.2.0-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package*.json ./
+COPY package.json /app/package.json
 RUN npm install
 
-COPY . .
-
 EXPOSE 5000
-CMD [ "node", "server.js" ]
+CMD ["npm", "start"]
