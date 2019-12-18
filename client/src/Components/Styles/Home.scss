@@ -1,0 +1,91 @@
+@mixin coolbutton {
+    button {
+        font-size: 95px;
+        background: none;
+        border: 5px solid black;
+        padding: 0 20px;
+        transition: 0.2s;
+        cursor: pointer;
+        box-shadow: 30px 30px 30px black;
+
+        &:hover {
+            background: black;
+            box-shadow: 10px 10px 10px black;
+            span {
+                background-image: url('../../bg.svg');
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+            }
+        }
+    }
+}
+
+
+.home {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .welcome {
+        h1 {
+            font-size: 90px;
+        }
+
+        h4 {
+            font-size: 50px;
+            
+            span {
+                font-weight: bold;
+            }
+
+        }
+
+        margin-bottom: 80px;
+    }
+    
+    .banner {
+        display: flex;
+
+        h2 {
+            font-size: 45px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            font-size: 95px;
+            width: 220px;
+            text-align: center;
+            border: none;
+            background: none;
+            border-bottom: 5px solid black;
+            margin: 0 50px;
+            box-shadow: 00px 30px 30px black;
+
+            &::placeholder {
+                color: black;
+
+            }
+        }
+
+        .form {
+
+            @include coolbutton;
+
+        
+        }
+
+        margin-bottom: 90px;
+
+
+    }
+
+        .new {
+            @include coolbutton;
+            button {
+                font-size: 120px;
+            }
+        }
+
+}

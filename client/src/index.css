@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400');
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,600,700');
 
 body {
   margin: 0;
@@ -8,4 +8,5 @@ body {
 
 * {
   font-family: 'Dosis', sans-serif;
+  font-weight: 400;
 }

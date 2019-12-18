@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 
+
+/* some css you might need lol
+h2 {
+  text-align: center;
+}
+*/
+
 class Room extends Component {
 
   constructor(props) {
